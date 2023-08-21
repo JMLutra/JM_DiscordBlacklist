@@ -9,7 +9,7 @@ namespace JM_DiscordBlacklist
 {
     internal class Config
     {
-        public ConfigObj? ConfigObj { get; set; }
+        public static ConfigObj? ConfigObj { get; set; }
         public Config(string path)
         { 
                 ConfigObj = JsonConvert.DeserializeObject<ConfigObj>(File.ReadAllText(path));

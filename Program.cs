@@ -14,9 +14,9 @@ namespace JM_DiscordBlacklist
                 Environment.Exit(1);
             }
 
-            Config conf = new Config(args[0]);
+            new Config(args[0]);
 
-            Bot bot = new Bot(conf.ConfigObj.Botconfig.Token);
+            Bot bot = new Bot(Config.ConfigObj.Botconfig.Token);
             bot.RunAsync().Wait();
 
         }
