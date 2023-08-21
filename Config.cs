@@ -9,10 +9,10 @@ namespace JM_DiscordBlacklist
 {
     internal class Config
     {
-        public ConfigObj ConfigObj { get; set; }
-        public Config(string path) 
-        {
-            ConfigObj = JsonConvert.DeserializeObject<ConfigObj>(File.ReadAllText(path));
+        public ConfigObj? ConfigObj { get; set; }
+        public Config(string path)
+        { 
+                ConfigObj = JsonConvert.DeserializeObject<ConfigObj>(File.ReadAllText(path));
         }
     }
 
@@ -30,7 +30,7 @@ namespace JM_DiscordBlacklist
 
     internal class ConfigBot
     {
-        [JsonProperty("token")]
+        [JsonProperty("token"/*, Required = Required.Always*/)]
         public string Token { get; set; }
 
         [JsonProperty("activity")]

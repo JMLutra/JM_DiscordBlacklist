@@ -15,13 +15,6 @@ namespace JM_DiscordBlacklist
             }
 
             Config conf = new Config(args[0]);
-            if (conf.ConfigObj == null)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Please make shure to provide the path to the config file as an Argument.");
-                Console.ForegroundColor = ConsoleColor.White;
-                Environment.Exit(1);
-            }
 
             Bot bot = new Bot(conf.ConfigObj.Botconfig.Token);
             bot.RunAsync().Wait();
