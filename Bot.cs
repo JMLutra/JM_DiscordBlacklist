@@ -2,6 +2,7 @@
 using DisCatSharp.ApplicationCommands;
 using DisCatSharp.Entities;
 using DisCatSharp.Enums;
+using JM_DiscordBlacklist.Events;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -70,7 +71,12 @@ namespace JM_DiscordBlacklist
 
         private void RegisterEventListener(DiscordClient client, ApplicationCommandsExtension appl)
         {
-
+            client.SocketOpened += ClientBasicEvents.Client_SocketOpened;
+            client.SocketClosed += ClientBasicEvents.Client_SocketClosed;
+            client.SocketErrored += ClientBasicEvents.Client_SocketErrored;
+            client.Heartbeated += ClientBasicEvents.Client_Heartbeated;
+            client.Ready += ClientBasicEvents.Client_Ready;
+            client.Resumed += ClientBasicEvents.Client_Resumed;
         }
 
         private void RegisterCommands(ApplicationCommandsExtension appl, ApplicationCommandsConfiguration applConf)
