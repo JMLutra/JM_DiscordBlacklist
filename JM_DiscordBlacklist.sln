@@ -3,7 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JM_DiscordBlacklist", "JM_DiscordBlacklist.csproj", "{20075E7D-F629-4CA5-904D-89C28D6DAD65}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JM_DiscordBlacklist", "JM_DiscordBlacklist.csproj", "{20075E7D-F629-4CA5-904D-89C28D6DAD65}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7594F5F6-E6A4-4F90-9D7C-BE655FB79618}"
+	ProjectSection(SolutionItems) = preProject
+		testconfig.json = testconfig.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
