@@ -18,8 +18,8 @@ namespace JM_DiscordBlacklist
 
     internal class ConfigObj 
     {
-        [JsonProperty("token")]
-        public string Token { get; set; }
+        [JsonProperty("botconfig")]
+        public ConfigBot Botconfig { get; set; }
 
         [JsonProperty("lists")]
         public ConfigList[] ConfigLists { get; set; }
@@ -28,33 +28,42 @@ namespace JM_DiscordBlacklist
         public ConfigGuild[] ConfigGuilds { get; set; }
     }
 
+    internal class ConfigBot
+    {
+        [JsonProperty("token")]
+        public string Token { get; set; }
+
+        [JsonProperty("activity")]
+        public string Activity { get; set; }
+    }
+
     internal class ConfigList
     {
         [JsonProperty("url")]
-        private string Url { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("topic")]
-        private string Topic { get; set; }
+        public string Topic { get; set; }
 
         [JsonProperty("comment")]
-        private string Comment { get; set; }
+        public string Comment { get; set; }
 
         [JsonProperty("prefix")]
-        private string Prefix { get; set; }
+        public string Prefix { get; set; }
 
         [JsonProperty("suffix")]
-        private string Suffix { get; set; }
+        public string Suffix { get; set; }
     }
 
     internal class ConfigGuild
     {
         [JsonProperty("guildId")]
-        private ulong GuildId { get; set; }
+        public ulong GuildId { get; set; }
 
         [JsonProperty("channelId")]
-        private ulong ChannelID { get; set; }
+        public ulong ChannelID { get; set; }
 
         [JsonProperty("timeout")]
-        private int Timeout { get; set; }
+        public int Timeout { get; set; }
     }
 }

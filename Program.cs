@@ -23,7 +23,7 @@ namespace JM_DiscordBlacklist
                 Environment.Exit(1);
             }
 
-            Bot bot = new Bot(conf.ConfigObj.Token);
+            Bot bot = new Bot(conf.ConfigObj.Botconfig.Token);
             bot.RunAsync().Wait();
 
         }
