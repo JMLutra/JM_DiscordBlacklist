@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
+﻿
 
 namespace JM_DiscordBlacklist
 {
@@ -6,8 +6,26 @@ namespace JM_DiscordBlacklist
     {
         static void Main(string[] args)
         {
-            Bot bot = new Bot(args[1]);
+            if(args.Length == 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Please provide the path to the config file as an Argument.");
+                Console.ForegroundColor = ConsoleColor.White;
+                Environment.Exit(1);
+            }
+
+            Config conf = new Config(args[0]);
+            if (conf.ConfigObj == null)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Please make shure to provide the path to the config file as an Argument.");
+                Console.ForegroundColor = ConsoleColor.White;
+                Environment.Exit(1);
+            }
+
+            Bot bot = new Bot(conf.ConfigObj.Token);
             bot.RunAsync().Wait();
+
         }
     }
 }
