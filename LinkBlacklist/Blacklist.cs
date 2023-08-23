@@ -18,7 +18,7 @@ namespace JM_DiscordBlacklist.LinkBlacklist
             links.Add(new Link(topic, url));
         }
 
-        public static Link SearchForLink(string potLink)
+        public static Link? SearchForLink(string potLink)
         {
             return links.Find(x => x.URL.Equals(potLink));
         }
