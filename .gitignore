@@ -363,3 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 /testconfig.json
 /Properties/launchSettings.json
+.vscode/
