@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,19 +9,54 @@ namespace JM_DiscordBlacklist.LinkBlacklist
 {
     internal class Blacklist
     {
-        private static List<Link> links = new();
+        private static ConcurrentDictionary<string, Link> links = new ConcurrentDictionary<string, Link>();
 
+        public bool ready = false;
         public Blacklist()
         { }
 
-        public static void AddLink(string topic, string url)
+        public void AddLink(string topic, string url)
         {
-            links.Add(new Link(topic, url));
+            Link link = new Link(topic, url);
+            links[url] = link;
         }
 
-        public static Link? SearchForLink(string potLink)
+        public Link? SearchForLink(string potLink)
         {
-            return links.Find(x => x.URL.Equals(potLink));
+            if (links.TryGetValue(potLink, out Link link))
+            {
+                return link;
+            }
+            return null;
+        }
+
+        public void Clear()
+        {
+            links.Clear();
+        }
+
+        public int Count()
+        {
+            return links.Count;
+        }
+
+        public async Task<int> TestTimeSearch(int times)
+        {
+            List<string> keyList = new List<string>(links.Keys);
+            Random rand = new Random();
+
+            int total = 0;
+
+            for (int i = 0; i < times; i++)
+            {
+                string key = keyList[rand.Next(keyList.Count)];
+                long start = DateTimeOffset.Now.ToUnixTimeMilliseconds();
+                Link link = SearchForLink(key);
+                long end = DateTimeOffset.Now.ToUnixTimeMilliseconds();
+                total += (int)(end - start);
+            }
+
+            return total / times;
         }
 
     }

@@ -9,12 +9,24 @@ namespace JM_DiscordBlacklist
 {
     internal class TheLinkBlacklist
     {
-        public static Blacklist blacklist;
+        public static Blacklist TheBlacklist;
         public TheLinkBlacklist() 
         { 
-            blacklist = new Blacklist();
+            TheBlacklist = new Blacklist();
 
             new Updater();
+            
+        }
+
+        public async Task TestTimeSearch()
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("Testing time to search for a link...");
+            Console.ForegroundColor = ConsoleColor.White;
+            int time = await TheBlacklist.TestTimeSearch(1000);
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine($"Average time to search for a link: {time}ms");
+            Console.ForegroundColor = ConsoleColor.White;
         }
     }
 }
