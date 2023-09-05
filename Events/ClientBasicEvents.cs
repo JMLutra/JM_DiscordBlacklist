@@ -58,7 +58,7 @@ namespace JM_DiscordBlacklist.Events
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine($"Starting {dcl.CurrentUser.Username}");
             Console.WriteLine("Client ready!");
-            Console.WriteLine($"Shard {dcl.ShardId}");
+            //Console.WriteLine($"Shard {dcl.ShardId}");
             //TODO: name all commands
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Bot ready!");
