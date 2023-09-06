@@ -48,10 +48,16 @@ namespace JM_DiscordBlacklist
                     ConfigGuild confGuild= Config.ConfigObj.Guilds[msg.Guild.Id];
                     await msg.DeleteAsync();
                     DiscordEmbedField actionField = null;
+                    try{
                     if(confGuild.Timeout > 0){
                         await msg.Guild.TimeoutAsync(msg.Author.Id, TimeSpan.FromHours(confGuild.Timeout), $"Blacklisted Link; Topic: {link.Topic}");
                         actionField = new DiscordEmbedField("Action", $"The User was timeouted {Formatter.Timestamp(DateTime.Now, DisCatSharp.Enums.TimestampFormat.RelativeTime)} ago, until {Formatter.Timestamp(TimeSpan.FromHours(confGuild.Timeout), DisCatSharp.Enums.TimestampFormat.ShortDateTime)}", true);
                     }
+                    }catch()
+                    {
+                        
+                    }
+                    
                     var member = msg.Author.ConvertToMember(msg.Guild).Result;
                     var userField = new DiscordEmbedField("User", $"**Username:** {msg.Author.UsernameWithGlobalName} \n**Nickname:** {member.Nickname} \n**Joined:** {member.JoinedAt.DateTime} ({Formatter.Timestamp(member.JoinedAt, DisCatSharp.Enums.TimestampFormat.RelativeTime)})", false);
                     var linkField = new DiscordEmbedField("Link", $"**Link:** {potLink} \n**Topic:** {link.Topic}", true);
