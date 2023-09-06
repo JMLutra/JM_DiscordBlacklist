@@ -4,6 +4,7 @@ This Bot is made to be selfhosted.
 ## Running the Bot
 ### Requirements
 The .Net 6.0 SDK is required to build and run the bot.
+
 A Discord Bot with the Message Content Intent and the following pewrmissions on each guild it should be active on:
 - View Channels
 - Send Messages (at least to the specified log channel)
@@ -17,7 +18,7 @@ The bot also needs a role higher than the members whose links should be checked.
 1. Clone the repository using `git clone https://github.com/JMLutra/JM_DiscordBlacklist.git`
 2. Create a json file somewhere on your system with the following syntax:
 
-    ```json
+    ```javascript
     {
         "botconfig": {
             "token": "", // The token of the bot
@@ -52,13 +53,19 @@ The bot also needs a role higher than the members whose links should be checked.
 
 ## Usage
 The bot will start by fetching all the lists specified in your config file. 
+
 Between infos about the discord bot, it tells you in cyan how many links it now has on it's blacklist, how long it took to fetch them and how long it takes to search for a link (typically 0ms).
+
 After that, it will listen for messages in the guilds specified in the config file. 
+
 If it finds a blacklisted link, the message will be deleted and a message with all the necesary info will be sent to the channel specified in the config file.
+
 When a timeout is specified for the guild, the bot will carry it out.
+
 The bot automatically refreshes the blacklist every 30 minutes. This only takes a few ms.
 
 ### Commands
 The bot has two Slashcommands:
-`/checklinks enable/disable` this enables or disables the link checking on all guilds specified as well as sending a message to all specified channels to inform of this change. This command can only be used by the users specified in the config file under `adminIds`
+`/checklinks enable/disable` this enables or disables the link checking on all guilds specified as well as sending a message to all specified channels to inform of this change. This command can only be used by the users specified in the config file under `adminIds`.
+
 `/shutdown` This command can only be used by the owner of the bot and shuts down the bot.
