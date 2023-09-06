@@ -13,6 +13,10 @@ namespace JM_DiscordBlacklist
         public Config(string path)
         { 
                 ConfigObj = JsonConvert.DeserializeObject<ConfigObj>(File.ReadAllText(path));
+                foreach (ConfigGuild confGuild in ConfigObj.ConfigGuilds)
+                {
+                    ConfigObj.Guilds[confGuild.GuildId] = confGuild;
+                }
         }
     }
 
@@ -26,6 +30,8 @@ namespace JM_DiscordBlacklist
 
         [JsonProperty("guilds")]
         public ConfigGuild[] ConfigGuilds { get; set; }
+
+        public Dictionary<ulong?, ConfigGuild> Guilds { get; set; } = new Dictionary<ulong?, ConfigGuild>();
     }
 
     internal class ConfigBot

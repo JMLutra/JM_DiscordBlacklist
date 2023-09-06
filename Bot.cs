@@ -29,7 +29,7 @@ namespace JM_DiscordBlacklist
                 Token = Token,
                 TokenType = TokenType.Bot,
                 AutoReconnect = true,
-                MinimumLogLevel = LogLevel.Debug, //TODO Change to Error
+                MinimumLogLevel = LogLevel.Error,
                 Intents = DiscordIntents.AllUnprivileged | DiscordIntents.MessageContent,
                 MessageCacheSize = 2048
             };
