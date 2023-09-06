@@ -66,6 +66,7 @@ The bot automatically refreshes the blacklist every 30 minutes. This only takes 
 
 ### Commands
 The bot has two Slashcommands:
+
 `/checklinks enable/disable` this enables or disables the link checking on all guilds specified as well as sending a message to all specified channels to inform of this change. This command can only be used by the users specified in the config file under `adminIds`.
 
 `/shutdown` This command can only be used by the owner of the bot and shuts down the bot.
