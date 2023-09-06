@@ -74,7 +74,7 @@ namespace JM_DiscordBlacklist
 
                     await msg.Guild.GetChannel(confGuild.ChannelID).SendMessageAsync(embed.Build());
 
-                    Console.WriteLine($"The link sent by {msg.Author.Username} was blacklisted. Topic: {link.Topic}")
+                    Console.WriteLine($"The link sent by {msg.Author.Username} was blacklisted. Topic: {link.Topic}");
                 }
             }
         }
