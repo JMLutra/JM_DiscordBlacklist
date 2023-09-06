@@ -3,6 +3,7 @@ using DisCatSharp;
 using DisCatSharp.Entities;
 using DisCatSharp.EventArgs;
 using static JM_DiscordBlacklist.Bot;
+using static JM_DiscordBlacklist.TheLinkBlacklist;
 
 namespace JM_DiscordBlacklist.Events
 {
@@ -11,6 +12,7 @@ namespace JM_DiscordBlacklist.Events
         public static Task Client_MessageCreated(DiscordClient dcl, MessageCreateEventArgs e)
         {
             if (e.Guild == null) return Task.CompletedTask; 
+            if(!CheckLinks) return Task.CompletedTask;
             if(!Config.ConfigObj.Guilds.ContainsKey(e.GuildId)) return Task.CompletedTask; 
             
             string pattern = @"(?i)\bhttps?://(?:\S+\.)?\S+\b";

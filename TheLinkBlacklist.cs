@@ -12,20 +12,31 @@ using System.Threading.Tasks;
 
 namespace JM_DiscordBlacklist
 {
-    internal class TheLinkBlacklist
+    public class TheLinkBlacklist
     {
         public static Blacklist TheBlacklist;
+        public static bool CheckLinks;
         public TheLinkBlacklist(CancellationTokenSource cToken) 
         { 
             TheBlacklist = new Blacklist();
-
+            CheckLinks = true;
             ScheduleAsyncUpdater(cToken).Wait();
         }
 
+        public bool CheckCheckLinks() { return CheckLinks; }
+        public void EnableCheckLinks() { CheckLinks = true; }
+
+        public void DisableCheckLinks() {  CheckLinks = false; }
+
         public async Task CheckLink(DiscordClient dcl, DiscordMessage msg, MatchCollection matches)
         {
+            while(!TheBlacklist.ready)
+            {
+                await Task.Delay(10);
+            }
             foreach (Match match in matches)
             {
+
                 string potLink = match.Value;
                 string pattern = @"(\.\w{2,6})(\/[^\/]*)?$";
                 potLink = Regex.Replace(potLink, pattern, "$1");

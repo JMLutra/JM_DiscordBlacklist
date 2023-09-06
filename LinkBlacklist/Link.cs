@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JM_DiscordBlacklist.LinkBlacklist
 {
-    internal class Link
+    public class Link
     {
         public string Topic { get; }
         public string URL { get; }

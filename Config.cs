@@ -41,6 +41,9 @@ namespace JM_DiscordBlacklist
 
         [JsonProperty("activity")]
         public string Activity { get; set; }
+
+        [JsonProperty("adminIds")]
+        public ulong[] AdminIDs { get; set; }
     }
 
     internal class ConfigList

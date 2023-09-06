@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace JM_DiscordBlacklist.LinkBlacklist
 {
-    internal class Blacklist
+    public class Blacklist
     {
         private static ConcurrentDictionary<string, Link> links = new ConcurrentDictionary<string, Link>();
 

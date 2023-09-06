@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace JM_DiscordBlacklist
 {
-    internal class Bot : IDisposable
+    public class Bot : IDisposable
     {
         public static CancellationTokenSource ShutdownRequest;
         public static DiscordClient Client { get; set; }
@@ -86,7 +86,8 @@ namespace JM_DiscordBlacklist
 
         private void RegisterCommands(ApplicationCommandsExtension appl, ApplicationCommandsConfiguration applConf)
         {
-
+            appl.RegisterGlobalCommands<Commands.BotCommands>();
+            appl.RegisterGlobalCommands<Commands.BlacklistCommands>();
         }
     }
 }
