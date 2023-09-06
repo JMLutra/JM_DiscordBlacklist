@@ -58,7 +58,7 @@ Between infos about the discord bot, it tells you in cyan how many links it now 
 
 After that, it will listen for messages in the guilds specified in the config file. 
 
-If it finds a blacklisted link, the message will be deleted and a message with all the necesary info will be sent to the channel specified in the config file.
+If it finds a blacklisted link, the message will be deleted and a embed with all the necesary info will be sent to the channel specified in the config file.
 
 When a timeout is specified for the guild, the bot will carry it out.
 
