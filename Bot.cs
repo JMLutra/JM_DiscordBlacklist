@@ -17,6 +17,7 @@ namespace JM_DiscordBlacklist
         public static CancellationTokenSource ShutdownRequest;
         public static DiscordClient Client { get; set; }
         public static ApplicationCommandsExtension Appl;
+        public static TheLinkBlacklist TlBl;
 
         public ulong guildID { get; set; }
         public Bot(string Token)
@@ -45,6 +46,8 @@ namespace JM_DiscordBlacklist
 
             RegisterEventListener(Client, Appl);
             RegisterCommands(Appl, applConf);
+
+            TlBl = new(ShutdownRequest);
         }
 
         public void Dispose()
@@ -77,6 +80,8 @@ namespace JM_DiscordBlacklist
             client.Heartbeated += ClientBasicEvents.Client_Heartbeated;
             client.Ready += ClientBasicEvents.Client_Ready;
             client.Resumed += ClientBasicEvents.Client_Resumed;
+
+            client.MessageCreated += MessageEvents.Client_MessageCreated;
         }
 
         private void RegisterCommands(ApplicationCommandsExtension appl, ApplicationCommandsConfiguration applConf)

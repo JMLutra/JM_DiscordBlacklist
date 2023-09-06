@@ -72,6 +72,8 @@ namespace JM_DiscordBlacklist.LinkBlacklist
                     }
                 }
 
+                httpClient.Dispose();
+                
                 return lines;
             }
         }

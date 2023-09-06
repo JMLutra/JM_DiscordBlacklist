@@ -1,5 +1,7 @@
 ﻿
 
+using static JM_DiscordBlacklist.TheLinkBlacklist;
+
 namespace JM_DiscordBlacklist
 {
     internal class Program
@@ -16,6 +18,9 @@ namespace JM_DiscordBlacklist
 
             new Config(args[0]);
 
+            /* var tlbl = new TheLinkBlacklist(new CancellationTokenSource());
+            Console.Read(); */
+            
             Bot bot = new Bot(Config.ConfigObj.Botconfig.Token);
             bot.RunAsync().Wait();
 
