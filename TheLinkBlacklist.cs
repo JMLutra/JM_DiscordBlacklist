@@ -73,6 +73,8 @@ namespace JM_DiscordBlacklist
                     .WithFooter($"Discord Blacklist: Currently {TheBlacklist.Count()} links are blacklisted. Made with ❤️ by J_M_Lutra");
 
                     await msg.Guild.GetChannel(confGuild.ChannelID).SendMessageAsync(embed.Build());
+
+                    Console.WriteLine($"The link sent by {msg.Author.Username} was blacklisted. Topic: {link.Topic}")
                 }
             }
         }
