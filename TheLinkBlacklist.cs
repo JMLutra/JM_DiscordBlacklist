@@ -53,7 +53,7 @@ namespace JM_DiscordBlacklist
                         await msg.Guild.TimeoutAsync(msg.Author.Id, TimeSpan.FromHours(confGuild.Timeout), $"Blacklisted Link; Topic: {link.Topic}");
                         actionField = new DiscordEmbedField("Action", $"The User was timeouted {Formatter.Timestamp(DateTime.Now, DisCatSharp.Enums.TimestampFormat.RelativeTime)} ago, until {Formatter.Timestamp(TimeSpan.FromHours(confGuild.Timeout), DisCatSharp.Enums.TimestampFormat.ShortDateTime)}", true);
                     }
-                    }catch()
+                    }catch(Exception e)
                     {
                         
                     }
